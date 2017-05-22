@@ -39,7 +39,8 @@ the functionality of the script is defined by the invoqed action
 
 - remove: will remove all instances of TIM and files, except the basic
 installonce files that are installed with the MTP, so one can
-re-install the TIM without needing the installonce files.
+re-install the TIM without needing the installonce files. The existing
+TIM configuration files will be left in place.
 
 - check: Will list the installed tim for mtp packages
 
