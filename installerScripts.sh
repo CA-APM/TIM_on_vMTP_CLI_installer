@@ -259,7 +259,7 @@ usage() {
     echo " ACTION:"
     echo "     install  - installs the TIM software on a vMTP"
     echo "     remove   - removes the installed TIM from the vMTP"
-    echo "     check    - Checks what TIM components are installed"
+    echo "     list     - lists installed TIM components"
     echo
     echo "     For the installation, the script needs the files:"
     echo "     - tim-mtp-requisites-Linux-el6-x64-*.image"
@@ -292,7 +292,7 @@ title "$LDATE `whoami`@`hostname -s` - ${PROGNAME}.sh version $VER"
 #
 ##############################################################################
 # Check if we have the required information
-if [ "$ACTION" = "install" ] || [ "$ACTION" = "remove" ]  || [ "$ACTION" = "check" ]
+if [ "$ACTION" = "install" ] || [ "$ACTION" = "remove" ]  || [ "$ACTION" = "list" ]
 then
     entry "Action requested: $ACTION"
 else
@@ -587,7 +587,7 @@ then
     # last spacer
     echo
     
-elif [ "$ACTION" = "check" ]
+elif [ "$ACTION" = "list" ]
 then
 
     echo
