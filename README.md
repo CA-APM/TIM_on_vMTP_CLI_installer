@@ -1,4 +1,4 @@
-# TIM_on_vMTP_CLI_Installer rel1.1-b7
+# TIM_on_vMTP_CLI_Installer rel1.1-b8
 
 **Purpose**: Enables an admin user to perform a command line installation of the TIM for MTP on a vMTP installation  
   _by Mertin, Joerg_
@@ -10,6 +10,8 @@ through the command line onto a vMTP installation
 So far - the installerScript has been tested with TIM for MTP versions
 10.5.0 and 10.5.1. However, as this script uses the "official"
 scripts, other versions should work too.
+
+Please find the full documentation on the [Wiki Page](https://cawiki.ca.com/display/SASWAT/TIM+on+vMTP+command+line+installer).
 
 ## Installation Instructions
 
