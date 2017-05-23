@@ -349,7 +349,7 @@ then
     #for file in machine-settings-mtp tim-mtp-requisites-Linux tim-mtp-Linux
     # We removed the "machine-settings-mtp", as it adds configuration capability
     # for time zone and systme restart etc.
-    for file in tim-mtp-requisites-Linux tim-mtp-Linux
+    for file in tim-mtp-system tim-mtp-requisites-Linux tim-mtp-Linux
     do
 	package=`ls ${file}-*.image 2>&1`
 	title "Working on $package"
@@ -583,12 +583,7 @@ then
 		# We need to check on the Link and the RPM here.
 		if [ -h "/etc/wily/system" ]
 		then
-		    log "Uninstalling tim-mtp-system"
-		    log "Removing system link"
-		    MSG="Removing /etc/wily/system link"
-		    rm -f /etc/wily/system
-		    errlvl=$?
-		    errors
+		    log "Cleaning up tim-mtp-system files"
 		    MSG="Removing /etc/wily/cem directory failed"
 		    rmdir /etc/wily/cem
 		    errlvl=$?
