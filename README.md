@@ -38,11 +38,11 @@ the functionality of the script is defined by the invoqed action
   installer will not install the system nor the installonce packages.
 
 - remove: will remove all instances of TIM and files, except the basic
-installonce files that are installed with the MTP, so one can
-re-install the TIM without needing the installonce files. The existing
-TIM configuration files will be left in place.
+  installonce files that are installed with the MTP, so one can
+  re-install the TIM without needing the installonce files. The existing
+  TIM configuration files will be left in place.
 
-- check: Will list the installed tim for mtp packages
+- list: Will list the installed tim for mtp packages
 
 
 #### Installation
@@ -57,7 +57,7 @@ tim-mtp-requisites-Linux-el6-x64-10.5.1.8.990101-b62c8d4e85e5ab5a33aef03fee0bbb8
 ```
 
 then execute the installer-script with install (for installing the TIM
-files), with remove (for removing the TIM files) ro with check (to
+files), with remove (for removing the TIM files) or with list (to
 list the detected tim for mtp components).
 ```
 $ sudo ./installerScripts.sh 
@@ -73,7 +73,7 @@ $ sudo ./installerScripts.sh
  ACTION:
      install  - installs the TIM software on a vMTP
      remove   - removes the installed TIM from the vMTP
-     check    - List installed TIM for MTP components
+     list     - List installed TIM for vMTP components
 
      For the installation, the script needs the files:
      - tim-mtp-requisites-Linux-el6-x64-*.image
