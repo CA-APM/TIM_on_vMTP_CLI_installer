@@ -16,7 +16,7 @@ PROGNAME="`basename $0 .sh`"
 PROG_PID=$$
 
 # Version string
-VER="1.1-b7"
+VER="1.1-b8"
 
 # Directory we work in.
 BASEDIR=`pwd`
@@ -337,7 +337,7 @@ then
     errors
     log "*** Creating installation directory: $install_dir"
 else
-    log "*** Existing installation directory: $install_dir "
+    log "Existing installation directory: $install_dir"
 fi
 
 #
@@ -351,12 +351,12 @@ then
     # for time zone and systme restart etc.
     for file in tim-mtp-requisites-Linux tim-mtp-Linux
     do
-	package=`ls ${file}-*.image`
+	package=`ls ${file}-*.image 2>&1`
 	title "Working on $package"
-	entry "Checking if $file is already installed"
 	
 	case $file in
 	    tim-mtp-system)
+		entry "Checking if $file is already installed"
 		# We need to check on the Link and the RPM here.
 		if [ ! -h "/etc/wily/system" ]
 		then
@@ -378,6 +378,7 @@ then
 		;;
 
 	    machine-settings-mtp)
+		entry "Checking if $file is already installed"
 		log "checking for \"$install_dir/$mtpMachineSetting\""
 		if [ -h "/etc/wily/machine/machine-settings" ]
 		then
@@ -400,6 +401,14 @@ then
 		errors
 		;;
 	    tim-mtp-requisites-Linux)
+		if [ ! -f "$package" ]
+		then
+		    usage
+		    MSG="No installation image found. Aborting"
+		    errlvl=1
+		    errors
+		fi
+		entry "Checking if $file is already installed"
 		log "checking for \"$install_dir/$mtpRequisitePackage\""
 		if [ -h "/etc/wily/tim-mtp-requisites" ]
 		then
@@ -431,6 +440,14 @@ then
 		errors
 		;;
 	    tim-mtp-Linux)
+		if [ ! -f "$package" ]
+		then
+		    usage
+		    MSG="No installation image found. Aborting"
+		    errlvl=1
+		    errors
+		fi
+		entry "Checking if $file is already installed"
 		# We need to check on the Link and the RPM here.
 		if [ -h "/etc/wily/tim-mtp" ] || [ `rpm --quiet -q tim` ]
 		then
@@ -491,7 +508,7 @@ then
 
 elif [ "$ACTION" = "remove" ]
 then
-    title "Action requested: $ACTION"
+
     for file in tim-mtp-Linux machine-settings-mtp tim-mtp-requisites-Linux tim-mtp-system
     do
 	if [ "$file" != "tim-mtp-system" ]
@@ -500,7 +517,7 @@ then
 	else
 	    packet="system"
 	fi
-	title "Working on $package"
+	title "Working on $title"
 	entry "Checking if $file is installed"
 	
 	case $file in
@@ -553,7 +570,7 @@ then
 		    $install_dir/$mtpTimPackage/install/uninstall >> $LogFile 2>&1
 		    errlvl=$?
 		    errors
-		    log "Removing $mtpRequisitePackage installation files"
+		    log "Removing $mtpTimPackage installation files"
 		    MSG="Removing $install_dir/$mtpTimPackage failed"
 		    rm -rf $install_dir/$mtpTimPackage
 		    errlvl=$?
